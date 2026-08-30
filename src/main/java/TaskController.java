@@ -1,0 +1,26 @@
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.config.Task;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/tasks")
+public class TaskController {
+}
+
+// Define the CRUD operators
+@PostMapping("/tasks") {
+    public ResponseEntity<Task> createTask(@RequestBody Task task) {
+        Task savedTask = taskService.createTask(task);
+        return new ResponseEntity<>(savedTask, HttpStatus.CREATED);
+    }
+}
+
+// 1. Get all tasks
+@GetMapping("/tasks")
+public ResponseEntity<List<Task>> getAllTasks() {
+    return ResponseEntity.ok(getAllTask());
+}
