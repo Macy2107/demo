@@ -11,18 +11,14 @@ import java.util.List;
 public class TaskController {
 
     // Define the CRUD operators
-    @PostMapping("/tasks") {
-        public ResponseEntity<Task> createTask(@RequestBody Task task) {
-            Task savedTask = taskService.createTask(task);
-            return new ResponseEntity<>(savedTask, HttpStatus.CREATED);
-        }
-    }
+    @Autowired
+    private TaskService taskService;
 
-    // 1. Get all tasks
-    @GetMapping("/tasks")
-    public ResponseEntity<List<Task>> getAllTasks() {
-        return ResponseEntity.ok(getAllTask());
-
+    // 1. Create a Task
+    @PostMapping("/task")
+    public String createTask(@RequestBody Task task) {
+        taskService.createTask(task);
+        return "Task created successfully";
     }
 
     // 2. Create task
