@@ -21,8 +21,11 @@ public class TaskController {
         return "Task created successfully";
     }
 
-    // 2. Create task
-    
+    // 2. Get All Tasks
+    @GetMapping("/tasks")
+    public List<Task> getAllTasks {
+        return taskService.getAllTasks();
+    }
 }
 
 // Define the CRUD operators
