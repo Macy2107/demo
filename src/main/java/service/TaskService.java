@@ -31,4 +31,10 @@ public class TaskService {
             return taskRepositoru.save(task);
         }).orElses(null);
     }
+
+    // 5. Delete Task
+    public String deleteTask(Long id) {
+        taskRepository.deleteById(id);
+        return "Task is deleted successfully";
+    }
 }
