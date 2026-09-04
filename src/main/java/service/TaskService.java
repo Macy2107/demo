@@ -22,4 +22,13 @@ public class TaskService {
         return taskRepository.findById(id).
                 orElse(null);
     }
+
+    // 4. Update Task
+    public Task updateTask(Long id, Task updatedTask) {
+        return taskRepository.findById(id).map(task -> {
+            task.setTitle(updatedTask.getTitle());
+            task.setStatus(updatedTask.getStatus());
+            return taskRepositoru.save(task);
+        }).orElses(null);
+    }
 }
