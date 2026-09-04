@@ -33,7 +33,10 @@ public class TaskService {
     }
 
     // 5. Delete Task
-    public String deleteTask(Long id) {
+    public boolean deleteTask(Long id) {
+        if (!taskRepository.existsById(id)) {
+            return false;
+        }
         taskRepository.deleteById(id);
         return "Task is deleted successfully";
     }
