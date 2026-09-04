@@ -26,6 +26,12 @@ public class TaskController {
     public List<Task> getAllTasks {
         return taskService.getAllTasks();
     }
+
+    // 3. Get Task by ID
+    @GetMapping("/tasks")
+    public Task getTaskById(@PathVariable Long id) {
+        return taskService.getTaskById(id);
+    }
 }
 
 // Define the CRUD operators
