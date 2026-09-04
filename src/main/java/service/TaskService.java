@@ -37,4 +37,9 @@ public class TaskService {
         taskRepository.deleteById(id);
         return "Task is deleted successfully";
     }
+
+    // 6. Get Tasks by Status
+    public List<Task> getTasksByStatus(String status) {
+        return taskRepository.findByStatus(status);
+    }
 }
