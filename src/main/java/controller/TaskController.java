@@ -39,6 +39,13 @@ public class TaskController {
         taskService.updateTask(id, task);
         return taskService.getTaskById(id);
     }
+
+    // 5. Delete a Task
+    @DeleteMapping("task/{id}")
+    public String deleteTask(@PathVariable Long id) {
+        taskService.deleteTask(id);
+        return "Task deleted successfully"
+    }
 }
 
 // Define the CRUD operators
