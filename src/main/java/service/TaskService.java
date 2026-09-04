@@ -18,7 +18,7 @@ public class TaskService {
     }
 
     // 3. Get Task by ID
-    public Task getTaskById(Long id) {
+    public model.Task getTaskById(Long id) {
         return taskRepository.findById(id).
                 orElse(null);
     }
