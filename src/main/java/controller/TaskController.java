@@ -32,6 +32,13 @@ public class TaskController {
     public Task getTaskById(@PathVariable Long id) {
         return taskService.getTaskById(id);
     }
+
+    // 4. Update a Task
+    @PutMapping
+    public Task updateTask(@PathVariable Long id, @RequestBody Task task) {
+        taskService.updateTask(id, task);
+        return taskService.getTaskById(id);
+    }
 }
 
 // Define the CRUD operators
