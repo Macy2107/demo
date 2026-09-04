@@ -13,7 +13,7 @@ public class TaskService {
     }
 
     // 2. Get All Tasks
-    public List<Task> getAllTasks() {
+    public List<model.Task> getAllTasks() {
         return taskRepository.findAll();
     }
 
