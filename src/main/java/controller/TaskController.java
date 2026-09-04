@@ -46,6 +46,13 @@ public class TaskController {
         taskService.deleteTask(id);
         return "Task deleted successfully"
     }
+
+    // 6. Get TAsks by Status
+    @GetMapping("/status/{status}")
+    public String getTaskByStatus(@PathVariable String status) {
+        taskService.getTaskByStatus(status);
+        return "Fetching tasks with status: " + status;
+    }
 }
 
 // Define the CRUD operators
