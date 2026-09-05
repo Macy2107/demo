@@ -24,7 +24,7 @@ public class TaskService {
     }
 
     // 4. Update Task
-    public Task updateTask(Long id, Task updatedTask) {
+    public model.Task updateTask(Long id, model.Task updatedTask) {
         return taskRepository.findById(id).map(task -> {
             task.setTitle(updatedTask.getTitle());
             task.setStatus(updatedTask.getStatus());
