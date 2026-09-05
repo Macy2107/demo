@@ -23,7 +23,7 @@ public class TaskController {
 
     // 2. Get All Tasks
     @GetMapping("/tasks")
-    public List<Task> getAllTasks {
+    public List<model.Task> getAllTasks(@RequestBody Task task) {
         return taskService.getAllTasks();
     }
 
