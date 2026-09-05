@@ -14,9 +14,9 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    // 1. Create a Task
-    @PostMapping("/task")
-    public String createTask(@RequestBody Task task) {
+    // 1. Create a Task POST /api/tasks
+    @PostMapping("/tasks")
+    public String createTask(@RequestBody model.Task task) {
         taskService.createTask(task);
         return "Task created successfully";
     }
