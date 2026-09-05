@@ -8,7 +8,7 @@ public class TaskService {
     private TaskRepository taskRepository;
 
     // 1. Create a Task
-    public void createTask(Task task) {
+    public void createTask(model.Task task) {
         taskRepository.save(task);
     }
 
