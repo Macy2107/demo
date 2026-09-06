@@ -15,7 +15,10 @@ public class TaskController {
         return "Hello World!";
     }
 
-    
+    @GetMapping("/api/status")
+    public Map<String, String> status() {
+        return Map.of("status", "running");
+    }
 
     // Define the CRUD operators
     @Autowired
