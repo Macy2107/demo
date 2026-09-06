@@ -14,6 +14,11 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
+    @RequestMapping("/")
+    public String home() {
+        return "Hello World";
+    }
+
     // 1. Create a Task POST /api/tasks
     @PostMapping("/tasks")
     public String createTask(@RequestBody model.Task task) {
