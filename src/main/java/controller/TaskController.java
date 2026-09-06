@@ -10,6 +10,13 @@ import java.util.List;
 @RequestMapping("/api/tasks")
 public class TaskController {
 
+    @GetMapping("/")
+    public String home() {
+        return "Hello World!";
+    }
+
+    
+
     // Define the CRUD operators
     @Autowired
     private TaskService taskService;
