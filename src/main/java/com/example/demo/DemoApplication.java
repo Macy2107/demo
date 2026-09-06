@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication()
 @ComponentScan(basePackages = {"controller", "service", "model", "repository"})
 @EnableJpaRepositories(basePackages = "repository")
+@EntityScan(basePackages = "model")
 public class DemoApplication {
 
 	public static void main(String[] args) {
