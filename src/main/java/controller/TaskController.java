@@ -20,6 +20,15 @@ public class TaskController {
         return Map.of("status", "running");
     }
 
+    @GetMapping("/error")
+    public String getTaskError() {
+        try {
+            return "No error found";
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     // Define the CRUD operators
     @Autowired
     private TaskService taskService;
