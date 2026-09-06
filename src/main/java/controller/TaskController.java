@@ -67,7 +67,8 @@ public class TaskController {
     }
 
     // 5. Delete a Task
-    @DeleteMapping("task/{id}")
+    @DeleteMapping("/tasks/{id}")
+    @ResponseBody
     public String deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);
         return "Task deleted successfully"
