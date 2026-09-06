@@ -54,7 +54,6 @@ public class TaskController {
     }
 
     // 3. Get Task by ID
-    @GetMapping("/tasks{id}")
     public model.Task getTaskById(@PathVariable Long id) {
         return taskService.getTaskById(id);
     }
