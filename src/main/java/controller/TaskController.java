@@ -29,9 +29,15 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    @RequestMapping("/")
-    public String home() {
-        return "Hello World";
+    @GetMapping("/")
+    @ResponseBody
+    public String home(){
+        return "Hello World!";
+    }
+
+    @GetMapping("/api/{status}")
+    public Map<String, String> status(@PathVariable String status) {
+        return Map.of("status", "running");
     }
 
     // 1. Create a Task POST /api/tasks
