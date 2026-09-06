@@ -20,13 +20,9 @@ public class TaskController {
         return Map.of("status", "running");
     }
 
-    @GetMapping("/error")
-    public String getTaskError() {
-        try {
-            return "No error found";
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    @RequestMapping(value = "/error")
+    public String error()  {
+        return "Error message found";
     }
 
     // Define the CRUD operators
