@@ -76,6 +76,7 @@ public class TaskController {
 
     // 6. Get TAsks by Status
     @GetMapping("/status/{status}")
+    @ResponseBody
     public String getTaskByStatus(@PathVariable String status) {
         taskService.getTaskByStatus(status);
         return "Fetching tasks with status: " + status;
