@@ -1,29 +1,14 @@
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.config.Task;
+package controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import service.TaskService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/api/tasks")
 public class TaskController {
-
-    @GetMapping("/")
-    public String home() {
-        return "Hello World!";
-    }
-
-    @GetMapping("/api/status")
-    public Map<String, String> status() {
-        return Map.of("status", "running");
-    }
-
-    @RequestMapping(value = "/error")
-    public String error()  {
-        return "Error message found";
-    }
 
     // Define the CRUD operators
     @Autowired
@@ -32,7 +17,7 @@ public class TaskController {
     @GetMapping("/")
     @ResponseBody
     public String home(){
-        return "Hello World!";
+        return ">:33!";
     }
 
     @GetMapping("/api/{status}")
@@ -43,55 +28,41 @@ public class TaskController {
     // 1. Create a Task POST /api/tasks
     @PostMapping("/tasks")
     public String createTask(@RequestBody model.Task task) {
-        taskService.createTask(task);
-        return "Task created successfully";
+         taskService.createTask(task);
+         return "Task created successfully";
     }
 
     // 2. Get All Tasks
     @GetMapping("/tasks")
-    public List<model.Task> getAllTasks(@RequestBody Task task) {
+    public List<model.Task> getAllTasks() {
         return taskService.getAllTasks();
     }
 
     // 3. Get Task by ID
+    @GetMapping("/tasks/{id}")
     public model.Task getTaskById(@PathVariable Long id) {
         return taskService.getTaskById(id);
     }
 
     // 4. Update a Task
-    @PutMapping
-    public Task updateTask(@PathVariable Long id, @RequestBody Task task) {
+    @PutMapping("/tasks/{id}")
+    public model.Task updateTask(@PathVariable Long id, @RequestBody model.Task task) {
         taskService.updateTask(id, task);
         return taskService.getTaskById(id);
     }
 
     // 5. Delete a Task
     @DeleteMapping("/tasks/{id}")
-    @ResponseBody
     public String deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);
-        return "Task deleted successfully"
+        return "Task deleted successfully";
     }
 
-    // 6. Get TAsks by Status
+    // 6. Get Tasks by Status
     @GetMapping("/status/{status}")
-    @ResponseBody
     public String getTaskByStatus(@PathVariable String status) {
         taskService.getTaskByStatus(status);
         return "Fetching tasks with status: " + status;
     }
 }
 
-// Define the CRUD operators
-@PostMapping("/tasks") {
-    public ResponseEntity<Task> createTask(@RequestBody Task task) {
-        Task savedTask = taskService.createTask(task);
-        return new ResponseEntity<>(savedTask, HttpStatus.CREATED);
-    }
-}
-
-// 1. Get all tasks
-@GetMapping("/tasks")
-public ResponseEntity<List<Task>> getAllTasks() {
-    return ResponseEntity.ok(getAllTask());
-}

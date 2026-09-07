@@ -67,8 +67,9 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        
-       <!--        ADD OPEN API FROM STRING DOC TO TEST ON SWAGGER UI -->
+
+       <!--        ADD OPEN API FROM STRING DOC TO TEST ON SWAGGER UI     -->
+<!--        then manually run mvn springboot run at terminal -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>

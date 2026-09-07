@@ -1,14 +1,15 @@
 package service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.config.Task;
+import org.springframework.stereotype.Service;
+import repository.TaskRepository;
 
+import java.util.List;
+
+@Service
 public class TaskService {
-    private final TaskRepository taskRepository;
-
-    public TaskService(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
-    }
+    @Autowired
+    private TaskRepository taskRepository;
 
     // 1. Create a Task
     public void createTask(model.Task task) {
@@ -28,11 +29,11 @@ public class TaskService {
 
     // 4. Update Task
     public model.Task updateTask(Long id, model.Task updatedTask) {
-        return taskRepository.findById(id).map(task -> {
+        return taskRepository.findById(id).map(task -> { // Using Lambda statement to fetch the updatedTask
             task.setTitle(updatedTask.getTitle());
             task.setStatus(updatedTask.getStatus());
-            return taskRepositoru.save(task);
-        }).orElses(null);
+            return taskRepository.save(task);
+        }).orElse(null);
     }
 
     // 5. Delete Task
@@ -41,11 +42,12 @@ public class TaskService {
             return false;
         }
         taskRepository.deleteById(id);
-        return "Task is deleted successfully";
+        return true;
     }
 
     // 6. Get Tasks by Status
-    public List<Task> getTasksByStatus(String status) {
+    public List<model.Task> getTaskByStatus(String status) {
         return taskRepository.findByStatus(status);
     }
+
 }
